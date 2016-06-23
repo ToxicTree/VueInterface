@@ -5,7 +5,7 @@
 </template>
 
 <script>
-	export default {
+    export default {
         data() {
             return {
                 status: '...'
@@ -19,5 +19,5 @@
         created() {
             this.changeStatus();
         }
-	}
+    }
 </script>

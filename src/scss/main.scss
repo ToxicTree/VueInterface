@@ -1,3 +1,15 @@
 
 /* Import bootstrap */
-@import "./node_modules/bootstrap/dist/css/bootstrap"
+@import "./node_modules/bootstrap/dist/css/bootstrap";
+
+.app__title {
+	padding: 10px 15px 0px 15px;
+	height:auto;
+}
+
+.app__content {
+	padding: 8px;
+	border-left:   1px solid #ddd;
+	border-right:  1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+}

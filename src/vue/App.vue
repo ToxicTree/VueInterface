@@ -2,11 +2,11 @@
     <div class="container">
 
         <div class="nav">
-            <p class="navbar-brand" style="padding: 10px 15px 0px 15px; height:auto;">Vue-Components:</p>
+            <p class="navbar-brand app__title">Vue-Components:</p>
             <ul class="nav nav-tabs"></ul>
         </div>
 
-        <div id="content" class="tab-content" style="padding: 8px; border-left:1px solid #ddd;border-right:1px solid #ddd;border-bottom:1px solid #ddd;">
+        <div class="tab-content app__content">
             <component :is="componentExists(nav.substring(1))"></component>
         </div>
 
@@ -31,31 +31,27 @@
                 var content = "";
                 
                 for (var component in this.$options.components)
-                    content += "<li><a href='#"+component+"' @click='navigate'>"+component+"</li>"
+                    content += "<li><a href='#"+component+"'>"+component+"</li>";
 
-                this.$nextTick(function(){
-                    $('.nav-tabs').html(content);
-                    this.$compile($('.nav-tabs')[0]);
-                    this.navigate();
-                });
+                $('.nav-tabs').html(content);
+
+                window.onhashchange = this.navigate;
+
+                this.navigate();
             },
-            navigate(e) {
-                var url = (e) ? e.target.href : window.location.href;
+            navigate() {
+                var url = window.location.href;
 
-                var hash = url.substring(url.indexOf("#"));
-
-                var nav = this.nav = (hash && hash.indexOf("#")>-1) ? hash : this.nav;
+                var nav = this.nav = (url.indexOf("#")>0) ? url.substring(url.indexOf("#")) : this.nav;
                 
-                this.$nextTick(function(){
-                    $('.nav-tabs').children().each(function(){
-                        this.classList.remove('active');
-                        if (this.children[0].getAttribute('href')==nav)
-                            this.classList.add('active');
-                    });
+                $('.nav-tabs').children().each(function(){
+                    this.classList.remove('active');
+                    if (this.children[0].getAttribute('href')==nav)
+                        this.classList.add('active');
                 });
             }
         },
-        created() {
+        ready() {
             this.initNav();
         }
     }
