@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
- <title>:: COLLECTOR ::</title>
+ <title>:: VueInterface ::</title>
  <base href="" target="_top"/>
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Mobile Display-->
@@ -16,7 +16,6 @@
 
     <app id="app"></app>
 
-    <script src="js/dependencies.min.js"></script>
     <script src="js/app.js?d=<?=Date('ymdHis')?>"></script>
 
 </body>
