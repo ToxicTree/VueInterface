@@ -17,17 +17,18 @@
     export default {
         el() { return '#app' },
         components: {
-            Tester : require('./components/Tester.vue')
+            Tester : require('./components/Tester.vue'),
+            SqliteEditor : require('./components/SqliteEditor.vue')
         },
         data() {
-            return { nav: '#Tester' }
+            return { nav: '#SqliteEditor' }
         },
         methods: {
             componentExists(component) {
                 if (this.$options.components[component])
                     return component;
             },
-            initNav(){
+            initNav() {
                 var content = "";
                 
                 for (var component in this.$options.components)

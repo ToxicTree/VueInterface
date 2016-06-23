@@ -13,3 +13,11 @@
 	border-right:  1px solid #ddd;
 	border-bottom: 1px solid #ddd;
 }
+
+.app__fade {
+	transition: all 1s ease-out;
+}
+
+.app__status{
+	text-align: right;
+}
