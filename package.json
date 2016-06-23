@@ -1,0 +1,26 @@
+{
+  "name": "vueinterface",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ToxicTree/VueInterface.git"
+  },
+  "author": "Jonathan (Zoi/ToxicTree)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ToxicTree/VueInterface/issues"
+  },
+  "homepage": "https://github.com/ToxicTree/VueInterface#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "gulp": "^3.9.1",
+    "laravel-elixir": "5.0.0",
+    "laravel-elixir-vueify": "^1.0.3",
+    "vue": "^1.0.25"
+  }
+}
