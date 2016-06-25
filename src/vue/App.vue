@@ -2,11 +2,11 @@
     <div class="container">
 
         <div class="nav">
-            <p class="navbar-brand app__title">Vue-Components:</p>
+            <p class="navbar-brand App__title">Vue-Components:</p>
             <ul class="nav nav-tabs"></ul>
         </div>
 
-        <div class="tab-content app__content">
+        <div class="tab-content App__content">
             <component :is="componentExists(nav.substring(1))"></component>
         </div>
 

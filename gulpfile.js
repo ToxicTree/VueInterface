@@ -16,7 +16,7 @@ gulp.task('elixirLauncher', function(){
             .browserify('./src/main.js','./js/app.js');
 
         mix
-            .sass('./src/scss/main.scss','./css/app.css');
+            .sass('./src/main.scss','./css/app.css');
 
     })
 })

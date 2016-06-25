@@ -1,22 +1,18 @@
 <!DOCTYPE HTML>
 <html lang="en">
-<head>
- <title>:: VueInterface ::</title>
- <base href="" target="_top"/>
- <meta charset="utf-8">
- <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Mobile Display-->
- 
- <meta name="keywords" content=""/>
- <meta name="description" content=""/>
- <meta name="author" content=""/>
- <link rel="stylesheet" href="css/app.css">
+	<head>
+		<title>:: VueInterface ::</title>
+	 
+		<meta charset="utf-8">
 
-</head>
-<body role="document">
+		<link rel="stylesheet" href="css/app.css">
 
-    <app id="app"></app>
+	</head>
+	<body role="document">
 
-    <script src="js/app.js?d=<?=Date('ymdHis')?>"></script>
+	    <app id="app"></app>
 
-</body>
+	    <script src="js/app.js?d=<?=Date('ymdHis')?>"></script>
+
+	</body>
 </html>
