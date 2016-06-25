@@ -16,13 +16,11 @@
 <script>
     export default {
         el() { return '#app' },
-        components: {
-            Tester : require('./components/Tester.vue'),
-            SqliteEditor : require('./components/SqliteEditor.vue')
-        },
+
         data() {
-            return { nav: '#SqliteEditor' }
+            return { nav: '#Home' }
         },
+        components: { },
         methods: {
             componentExists(component) {
                 if (this.$options.components[component])
