@@ -21,3 +21,9 @@
         }
     }
 </script>
+
+<style>
+    .test {
+        color: #333;
+    }
+</style>

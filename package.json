@@ -1,7 +1,7 @@
 {
   "name": "vueinterface",
   "version": "1.0.0",
-  "description": "",
+  "description": "Basic interface for Vue components",
   "main": "index.php",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/ToxicTree/VueInterface.git"
   },
-  "author": "Jonathan (Zoi/ToxicTree)",
+  "author": "Jonathan (https://github.com/ToxicTree)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ToxicTree/VueInterface/issues"
