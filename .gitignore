@@ -2,3 +2,6 @@
 /js
 /css
 /node_modules
+
+# Ignore added components from repo
+components.js
