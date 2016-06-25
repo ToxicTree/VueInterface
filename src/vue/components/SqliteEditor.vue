@@ -13,6 +13,8 @@
                 status: '',
                 state: '',
                 editMode: '',
+                table: '',
+                row: '',
                 apiDomain: 'http://StorageAPI.dev',
                 apiPath: '/',
                 apiMethod: 'GET'
@@ -44,9 +46,9 @@
                         break;
                     }
                     else if (i==0)
-                        content += "<li class='apiPath'><a href='"+this.$root.nav+"' data-path='/'>"+n+"</a></li>";
+                        content += "<li class='apiPath'><a href='"+this.$root.nav+"' data-path='/' data-table=''>"+n+"</a></li>";
                     else
-                        content += "<li class='apiPath'><a href='"+this.$root.nav+"' data-path='"+h+"'>"+n+"</a></li>";
+                        content += "<li class='apiPath'><a href='"+this.$root.nav+"' data-path='"+h+"' data-table='"+n+"'>"+n+"</a></li>";
                 }
                 
                 content += "<li class='pull-right'><a href='"+this.$root.nav+"' data-path='"+this.apiPath+"'>reload</a></li>";
@@ -56,10 +58,16 @@
                 var self = this;
 
                 $('#apiPath a').click(function(){
-                    self.navigate(this.getAttribute('data-path'))
+                    self.navigate(
+                        this.getAttribute('data-path'),
+                        'GET',
+                        '',
+                        this.getAttribute('data-table'),
+                        0
+                    )
                 });
             },
-            navigate(path, method, mode) {
+            navigate(path, method, mode, table, row) {
                 if (!path)
                     return;
 
@@ -68,6 +76,9 @@
                 this.apiMethod = (method) ? method : 'GET';
 
                 this.editMode = (mode) ? mode : '';
+
+                this.table = (table) ? table : '';
+                this.row = (row) ? row : 0;
 
                 var data = false;
                 if (this.apiMethod == 'PUT'){
@@ -89,12 +100,12 @@
 
                 for (var tableName in data) {
                     content += "<tr>";
-                    content += " <td><a href='"+this.$root.nav+"' data-path='/"+tableName+"' data-list='table'>"+tableName+"</a></td>";
+                    content += " <td><a href='"+this.$root.nav+"' data-path='/"+tableName+"' data-table='"+tableName+"'>"+tableName+"</a></td>";
                     content += " <td>";
                     for (var i=0 ; i<data[tableName].length ; i++)
                         content += data[tableName][i]+" ";
                     content += " </td>";
-                    content += " <td><a href='"+this.$root.nav+"' data-path='/"+tableName+"/info' data-mode='edit'>Edit</a></td>";
+                    content += " <td><a href='"+this.$root.nav+"' data-path='/"+tableName+"/info' data-table='"+tableName+"' data-mode='edit'>Edit</a></td>";
                     content += "</tr>";
                 }
 
@@ -110,21 +121,21 @@
 
                     content += "<tr>";
                     content += " <td>Tablename:</td>";
-                    content += " <td><input class='form-control' name="+tablename+" value='"+data.tablename+"'></td>";
+                    content += " <td><input class='form-control' name="+data.tablename+" value='"+data.tablename+"'></td>";
                     content += "</tr>";
 
-                    for (var column in data.columns){
+                    for (var i=0 ; i<data.columns.length ; i++){
                         content += "<tr>";
-                        content += " <td>"+column+":</td>";
-                        content += " <td><input class='form-control' name="+column+" value='"+data.columns[column]+"'></td>";
+                        content += " <td>"+data.columns[i].name+":</td>";
+                        content += " <td><input class='form-control' name="+data.columns[i].name+" value='"+data.columns[i].type+"'></td>";
                         content += "</tr>";
                     }
                     
                     content += "<tr>";
                     content += " <td>Tools:</td>";
                     content += " <td>";
-                    content += "  <a href='"+this.$root.nav+"' data-path='"+this.apiPath+"'>Cancel</a>";
-                    content += "  <a href='"+this.$root.nav+"' data-path='"+this.apiPath+"' data-method='PUT'>Save</a>";
+                    content += "  <a href='"+this.$root.nav+"' data-path='/'>Cancel</a>";
+                    content += "  <a href='"+this.$root.nav+"' data-path='"+this.apiPath.substring(0,this.apiPath.lastIndexOf('/'))+"' data-method='PUT'>Save</a>";
                     content += " </td>";
                     content += "</tr>";
                     
@@ -142,14 +153,14 @@
                     for (var i=0; i<data.length ; i++){
                         content += "<tr>";
                         for (var key in data[i]){
-                            if (key=="id" && this.apiPath.lastIndexOf('/'+data[i].id) <1 )
-                                content += " <td><a href='"+this.$root.nav+"' data-path='"+this.apiPath+'/'+data[i].id+"'>"+data[i].id+"</a></td>";
+                            if (key=="id")
+                                content += " <td><a href='"+this.$root.nav+"' data-path='"+this.apiPath+'/'+data[i].id+"' data-table='"+this.table+"' data-row="+data[i].id+">"+data[i].id+"</a></td>";
                             else
                                 content += " <td>"+data[i][key]+"</td>";
                         }
                         content += " <td>";
-                        content += "  <a href='"+this.$root.nav+"' data-path='"+this.apiPath+'/'+data[i].id+"' data-method='DELETE'>KILL</a>";
-                        content += "  <a href='"+this.$root.nav+"' data-path='"+this.apiPath+'/'+data[i].id+"' data-mode='edit'>Edit</a>";
+                        content += "  <a href='"+this.$root.nav+"' data-path='"+this.apiPath+'/'+data[i].id+"' data-table='"+this.table+"' data-method='DELETE'>KILL</a>";
+                        content += "  <a href='"+this.$root.nav+"' data-path='"+this.apiPath+'/'+data[i].id+"' data-table='"+this.table+"' data-row="+data[i].id+" data-mode='edit'>Edit</a>";
                         content += " </td>";
                         content += "</tr>";
                     }
@@ -174,8 +185,8 @@
                     content += "<tr>";
                     content += " <td>Tools:</td>";
                     content += " <td>";
-                    content += "  <a href='"+this.$root.nav+"' data-path='"+this.apiPath+"'>Cancel</a>";
-                    content += "  <a href='"+this.$root.nav+"' data-path='"+this.apiPath+"' data-method='PUT'>Save</a>";
+                    content += "  <a href='"+this.$root.nav+"' data-path='/"+this.table+"' data-table='"+this.table+"'>Cancel</a>";
+                    content += "  <a href='"+this.$root.nav+"' data-path='"+this.apiPath+"' data-table='"+this.table+"' data-row="+this.row+" data-method='PUT'>Save</a>";
                     content += " </td>";
                     content += "</tr>";
                     
@@ -194,8 +205,8 @@
                     content += "<tr>";
                     content += " <td>Tools:</td>";
                     content += " <td>";
-                    content += "  <a href='"+this.$root.nav+"' data-path='"+this.apiPath+"' data-method='DELETE'>KILL</a>";
-                    content += "  <a href='"+this.$root.nav+"' data-path='"+this.apiPath+"' data-mode='edit'>Edit</a>";
+                    content += "  <a href='"+this.$root.nav+"' data-path='"+this.apiPath+"' data-table='"+this.table+"' data-method='DELETE'>KILL</a>";
+                    content += "  <a href='"+this.$root.nav+"' data-path='"+this.apiPath+"' data-table='"+this.table+"' data-row="+this.row+" data-mode='edit'>Edit</a>";
                     content += " </td>";
                     content += "</tr>";
                     
@@ -205,12 +216,11 @@
             },
             handleResponse(data,method){
                 var self = this;
-                var hierarchy = this.apiPath.split('/');
 
                 var content = 
-                    (this.apiPath == '/') ? this.prepDB(data) :
-                    (hierarchy.length == 2) ? this.prepTable(data) :
-                    (hierarchy.length  > 2) ? this.prepPost(data) : false;
+                    (this.row) ? this.prepPost(data) :
+                    (this.table) ? this.prepTable(data) :
+                    (this.apiPath=='/') ? this.prepDB(data) : false;
 
                 if (!content)
                     return;
@@ -221,7 +231,9 @@
                     self.navigate(
                         this.getAttribute('data-path'),
                         this.getAttribute('data-method'),
-                        this.getAttribute('data-mode')
+                        this.getAttribute('data-mode'),
+                        this.getAttribute('data-table'),
+                        this.getAttribute('data-row')
                     );
                 });
             },
