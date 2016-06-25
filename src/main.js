@@ -10,7 +10,9 @@ Vue.config.debug = true
 const App = require('./vue/App.vue');
 
 /* Load Components */
-App.components.Home = require('./vue/components/Home.vue')
+var components = require('../components.js')
+for (var c in components)
+	App.components[c] = components[c];
 
 /* Start App */
 new Vue(App);
