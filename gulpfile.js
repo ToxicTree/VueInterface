@@ -5,7 +5,6 @@ var gulp = require('gulp');
  */
 
 var elixir = require('laravel-elixir');
-require('laravel-elixir-vueify');
 
 elixir.config.js.browserify.options.debug=true;
 
@@ -15,8 +14,8 @@ gulp.task('elixirLauncher', function(){
         mix
             .browserify('./src/main.js','./js/app.js');
 
-        mix
-            .sass('./src/main.scss','./css/app.css');
+        //mix
+        //    .sass('./src/main.scss','./css/app.css');
 
     })
 })
