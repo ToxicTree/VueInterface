@@ -4,6 +4,7 @@
   "description": "Basic interface for Vue components",
   "main": "index.php",
   "scripts": {
+    "install": " cp -n './components.js.example' './components.js'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
