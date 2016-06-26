@@ -17,5 +17,16 @@ Each component will have a tab in the Apps navigation.
 #### Update App on changes
     gulp watch
 
+#### Adding components
+Everything listed in components.js will be loaded into the interface as vue-components.
+
+    exports.Component_Name = require(__PATH__)
+
+Examples:
+
+    exports.ComponentFromSrc = require('./src/vue/components/Home.vue')
+    exports.ComponentFromNPM = require('storageapi-editor')
+    exports.ComponentFromOtherProject = require('../AnotherProject')
+
 #### Used tools
 [jquery](http://jquery.com), [bootstrap](http://getbootstrap.com/), [vue.js](https://vuejs.org/), [node.js & npm](https://nodejs.org/en/), [gulp](http://gulpjs.com/), [laravel-elixir](https://laravel.com/docs/5.2/elixir)
