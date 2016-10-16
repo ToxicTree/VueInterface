@@ -15,7 +15,7 @@
 
 <script>
     export default {
-        el() { return '#app' },
+        el: '#app',
 
         data() {
             return { nav: '#Home' }

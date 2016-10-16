@@ -10,7 +10,8 @@
     </head>
     <body role="document">
 
-        <app id="app"></app>
+        <div id="app"></div>
+        <storageapi_editor></storageapi_editor>
 
         <script src="js/app.js?d=<?=Date('ymdHis')?>"></script>
 
