@@ -1,18 +1,18 @@
 <template>
-    <div id="test1">
+    <div id="test2">
         Test {{ status }}
     </div>
 </template>
 
 <script>
     export default {
-        name: 'Home',
+        name: 'Another',
         data() {
             return { status: '...' }
         },
         methods: {
             changeStatus(){
-                this.status = 'ok';
+                this.status = 'another ok';
             }
         },
         created() {
@@ -22,7 +22,7 @@
 </script>
 
 <style>
-    #test1 {
-        color: #f00;
+    #test2 {
+        color: #333;
     }
 </style>

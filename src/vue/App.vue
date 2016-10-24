@@ -1,56 +1,39 @@
 <template>
     <div class="container">
-
         <div class="nav">
-            <p class="navbar-brand App__title">Vue-Components:</p>
-            <ul class="nav nav-tabs"></ul>
+            <p class="navbar-brand App__title">{{$options.name}}</p>
+            <ul class="nav nav-tabs">
+                <li v-for="c in $options.components"
+                    :class="('#'+c.options.name == nav) ? 'active' : ''">
+                    <a :href="'#'+c.options.name">
+                        {{c.options.name}}
+                    </a>
+                </li>
+            </ul>
         </div>
-
         <div class="tab-content App__content">
             <component :is="componentExists(nav.substring(1))"></component>
         </div>
-
     </div>
 </template>
 
 <script>
     export default {
-        el: '#app',
-
+        name: 'VueInterface',
         data() {
             return { nav: '#Home' }
         },
         components: { },
         methods: {
-            componentExists(component) {
-                if (this.$options.components[component])
-                    return component;
+            componentExists(c) {
+                return (this.$options.components[c]) ? c : false;
             },
-            initNav() {
-                var content = "";
-                
-                for (var component in this.$options.components)
-                    content += "<li><a href='#"+component+"'>"+component+"</li>";
-
-                $('.nav-tabs').html(content);
-
-                window.onhashchange = this.navigate;
-
-                this.navigate();
-            },
-            navigate() {
-                var url = window.location.href;
-
-                var nav = this.nav = (url.indexOf("#")>0) ? url.substring(url.indexOf("#")) : this.nav;
-                
-                $('.nav-tabs').children().each(function(){
-                    this.classList.remove('active');
-                    if (this.children[0].getAttribute('href')==nav)
-                        this.classList.add('active');
-                });
+            initNav(){
+                window.onhashchange = () => this.nav = window.location.hash;
+                this.nav = window.location.hash || this.nav;
             }
         },
-        ready() {
+        created() {
             this.initNav();
         }
     }

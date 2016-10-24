@@ -1,18 +1,22 @@
 
-/* Get dependencies */
-window.$ = require('jquery');
+// Get dependencies
 window.Vue = require('vue');
 
-/* Configuration */
+// Configuration
 Vue.config.debug = true
 
-/* Get App */
-const App = require('./vue/App.vue');
+// Get App
+window.App = require('./vue/app.vue');
 
-/* Load Components */
+// Load Components
 var components = require('../components.js')
+
+// Insert components in App
 for (var c in components)
     App.components[c] = components[c];
 
-/* Start App */
+// Set element to mount on
+App.el = '#app';
+
+// Launch Application
 new Vue(App);

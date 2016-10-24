@@ -1,6 +1,6 @@
 # Ignore builds
-/js
-/css
+/dist/*.css
+/dist/*.js
 /node_modules
 
 # Ignore added components from repo
