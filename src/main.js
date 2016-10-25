@@ -1,6 +1,7 @@
 
 // Get dependencies
 window.Vue = require('vue');
+require('vue-resource');
 
 // Configuration
 Vue.config.debug = true
