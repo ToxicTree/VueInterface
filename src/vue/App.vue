@@ -3,10 +3,10 @@
         <div class="nav">
             <p class="navbar-brand App__title">{{$options.name}}</p>
             <ul class="nav nav-tabs">
-                <li v-for="(c, name) in this.$options.components"
-                    :class="('#'+name == nav) ? 'active' : ''">
-                    <a :href="'#'+name">
-                        {{name}}
+                <li v-for="(c, index) in this.$options.components"
+                    :class="('#'+index == nav) ? 'active' : ''">
+                    <a :href="'#'+index">
+                        {{index}}
                     </a>
                 </li>
             </ul>
