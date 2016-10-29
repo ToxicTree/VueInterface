@@ -4,7 +4,9 @@
   "description": "Basic interface for Vue components",
   "main": "index.php",
   "scripts": {
-    "install": " cp -n './components.js.example' './components.js'",
+    "install": "npm-run-all --parallel generate-main-scss generate-main-js",
+    "generate-main-js": "cp -u './src/main.example.js' './src/main.js'",
+    "generate-main-scss": "cp -u './src/main.example.scss' './src/main.scss",
     "watch-css": "node-sass -w src/main.scss dist/build.css",
     "watch-js": "watchify -vd -p browserify-hmr -e src/main.js -o dist/build.js",
     "build-css": "node-sass src/main.scss dist/build.css",
@@ -15,8 +17,7 @@
   },
   "browserify": {
     "transform": [
-      "vueify",
-      "babelify"
+      "vueify"
     ]
   },
   "repository": {

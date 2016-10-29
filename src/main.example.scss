@@ -1,4 +1,6 @@
 
+// Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
-@import "src/scss/App.scss";
+// Application
+@import "./scss/App.scss";

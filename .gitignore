@@ -1,7 +1,10 @@
-# Ignore builds
-/dist/*.css
-/dist/*.js
-/node_modules
+# NPM
+node_modules/
+npm-debug.log
 
-# Ignore added components from repo
-/components.js
+# Edited project
+src/main.js
+src/main.scss
+
+# Notes
+TODO
