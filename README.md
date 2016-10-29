@@ -6,37 +6,34 @@ This project is a testing-environment for writing modules/components in Vue.
 Each component will have a tab in the Apps navigation.
 
 #### Install
-    ```bash
-    git clone https://github.com/ToxicTree/VueInterface.git
-    cd VueInterface
-    npm install
-    ```
+```bash
+# Get project (Example with git)
+git clone https://github.com/ToxicTree/VueInterface.git
+cd VueInterface
 
-#### Running developing-server
-    ```bash
-    php -S localhost:8000
-    ```
+# Install npm-packages
+npm install
+```
 
 #### Compile JS & CSS
-    ```bash
-    npm run build
-    ```
+```bash
+npm run build
+```
+
+#### Build on changes
+```bash
+npm run watch
+```
+
+#### Running
+Open ``index.html`` or run a develping-server
+```bash
+php -S localhost:8000
+```
 
 #### Adding components
-Everything listed in components.js will be loaded into the interface as vue-components.
+You can edit your generated main.js or main.scss to require components or importing scss/css
 
-    ```js
-    exports.Component_Name = require(__PATH__)
-    ```
-
-Examples:
-
-    ```js
-    exports.ComponentFromSrc = require('./src/vue/components/Home.vue')
-    exports.ComponentFromNPM = require('storageapi-editor')
-    exports.ComponentFromOtherProject = require('../AnotherProject')
-    ```
 
 #### Used tools
-
 [bootstrap](http://getbootstrap.com/), [vue.js](https://vuejs.org/), [node.js & npm](https://nodejs.org/en/)
