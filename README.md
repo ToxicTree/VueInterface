@@ -28,7 +28,7 @@ php -S localhost:8000
 ```
 
 #### Adding components
-You can edit your generated main.js or main.scss to require components or importing scss/css
+You can edit your generated ``main.js`` and ``main.scss`` to require components or importing scss/css
 
 
 #### Used tools
