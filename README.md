@@ -26,10 +26,7 @@ npm run watch
 ```
 
 #### Running
-Open ``index.html`` or run a develping-server
-```bash
-php -S localhost:8000
-```
+Open ``index.html``
 
 #### Adding components
 You can edit your generated main.js or main.scss to require components or importing scss/css
