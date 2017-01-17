@@ -13,15 +13,11 @@ cd VueInterface
 
 # Install npm-packages
 npm install
-```
 
-#### Compile JS & CSS
-```bash
+# Build JS & CSS
 npm run build
-```
 
-#### Build on changes
-```bash
+# Build on changes while developing
 npm run watch
 ```
 
@@ -29,8 +25,8 @@ npm run watch
 Open ``index.html``
 
 #### Adding components
-You can edit your generated main.js or main.scss to require components or importing scss/css
+You can edit your generated ``main.js`` and ``main.scss`` to require components or importing scss/css
 
 
 #### Used tools
-[bootstrap](http://getbootstrap.com/), [vue.js](https://vuejs.org/), [node.js & npm](https://nodejs.org/en/)
+[node.js & npm](https://nodejs.org/en/), [vue.js](https://vuejs.org/), [bootstrap](http://getbootstrap.com/)
